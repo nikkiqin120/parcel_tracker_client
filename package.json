@@ -13,8 +13,8 @@
   "devDependencies": {
   },
   "scripts": {
-    "start": "./node_modules/.bin/netlify-lamba serve src",
-    "build": "./node_modules/.bin/netlify-lamba build src"
+    "start": "NODE_ENV=development netlify-lambda serve src",
+    "build": "NODE_ENV=production  netlify-lambda build src"
   },
   "author": "",
   "license": "ISC",
