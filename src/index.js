@@ -10,16 +10,9 @@ const cors = require("cors")
 
 app.use(cors({
   origin: "*"//"http://localhost:8080"
-}))
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
-
-
-router.use(cors({
-  origin: "*"//"http://localhost:8080"
-}))
-router.use(express.json())
-router.use(express.urlencoded({extended: false}))
+}), router)
+app.use(express.json(),router)
+app.use(express.urlencoded({extended: false}),router)
 
 router.get('/', (req, res) => {
   // res.send("Hi Nikki");
