@@ -1,4 +1,7 @@
 const express = require("express")
+const serverless = require("serverless-http");
+const tracker = require('delivery-tracker')
+
 const app = express()
 const router = express.Router()
 
@@ -7,27 +10,15 @@ app.use(cors({
   origin: "*"//"http://localhost:8080"
 }))
 
-var tracker = require('delivery-tracker')
-
-
-// app.get('/', (req,res)=>{
-//   console.log("router get")
-//   res.send(req.body)
-// })
-
-// app.get('/', (req, res) => {
-//   // res.sendStatus(200)
-//   // res.status(201).send("hi this ism e")
-//   res.json({message : "download"});
-//   // res.download("index.js")
-//   // res.send("req")
-// })
-
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
-app.post('/', (req, res) => {
+router.get('/', (req, res) => {
+  res.send("Hi Nikki")
+})
 
+router.post('/', (req, res) => {
+  
   // console.log(req.body)
   var courier = tracker.courier(req.body.cr)
   courier.trace(req.body.id, (err, result) => {
@@ -42,4 +33,8 @@ app.post('/', (req, res) => {
 })
 
 
-app.listen(5000)
+app.use(`/.netlify/functions/api`, router);
+
+module.exports = app;
+module.exports.handler = serverless(app);
+// app.listen(5000)
