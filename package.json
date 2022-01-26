@@ -11,10 +11,8 @@
     "serverless-http": "^2.7.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
   },
   "scripts": {
-    // "serve": "nodemon index.js",
     "start": "./node_modules/.bin/netlify-lamba serve src",
     "build": "./node_modules/.bin/netlify-lamba build src"
   },
