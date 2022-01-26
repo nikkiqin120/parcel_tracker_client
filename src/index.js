@@ -22,7 +22,11 @@ router.use(express.json())
 router.use(express.urlencoded({extended: false}))
 
 router.get('/', (req, res) => {
-  res.send("Hi Nikki")
+  // res.send("Hi Nikki");
+
+  res.json({
+    hello: "Nikki welcome here "
+  })
 })
 
 router.post('/', (req, res) => {
