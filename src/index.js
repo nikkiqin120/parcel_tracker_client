@@ -1,6 +1,6 @@
 const express = require("express")
 const serverless = require("serverless-http");
-const tracker = require('delivery-tracker')
+const tracker = require('../delivery-tracker_mod')
 const app = express()
 const router = express.Router()
 
@@ -31,5 +31,5 @@ router.post('/', (req, res) => {
 app.use('/.netlify/functions/index', router);//require('./routes/api'));
 
 module.exports = app;
-module.exports.handler = serverless(app);
-// app.listen(5000, () => console.log("server on 5000"))
+// module.exports.handler = serverless(app);
+app.listen(5000, () => console.log("server on 5000"))
