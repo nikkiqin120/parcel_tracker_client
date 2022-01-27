@@ -12,9 +12,9 @@
     "win-node-env": "^0.6.0"
   },
   "scripts": {
-    "test": "nodemon src/index",
-    "start": "NODE_ENV=development netlify-lambda serve src",
-    "build": "NODE_ENV=production  netlify-lambda build src"
+    "test": "nodemon index",
+    "start": "NODE_ENV=development netlify-lambda serve routes",
+    "build": "NODE_ENV=production  netlify-lambda build routes"
   },
   "author": "",
   "license": "ISC",
