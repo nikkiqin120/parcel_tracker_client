@@ -11,7 +11,7 @@ app.get('/', (req,res)=>{
   console.log("app entry test")
 })
 
-app.use(`/.netlify/functions/index`, require('./routes/api'));
+app.use('/.netlify/functions/index', require('./routes/api'));
 // app.use('/api', require('./routes/api'))
 
 module.exports = app;
