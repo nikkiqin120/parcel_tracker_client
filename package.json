@@ -8,12 +8,12 @@
     "delivery-tracker": "^2.7.1",
     "express": "^4.17.2",
     "netlify-lambda": "^2.0.15",
-    "serverless-http": "^2.7.0",
+    "serverless-http": "^2.7.0"
   },
   "scripts": {
     "test": "nodemon index",
-    "start": "NODE_ENV=development netlify-lambda serve routes",
-    "build": "NODE_ENV=production  netlify-lambda build routes"
+    "start": "NODE_ENV=development netlify-lambda serve src",
+    "build": "NODE_ENV=production  netlify-lambda build src"
   },
   "author": "",
   "license": "ISC",
