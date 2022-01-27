@@ -8,9 +8,8 @@
     "delivery-tracker": "^2.7.1",
     "express": "^4.17.2",
     "netlify-lambda": "^2.0.15",
-    "serverless-http": "^2.7.0"
-  },
-  "devDependencies": {
+    "serverless-http": "^2.7.0",
+    "win-node-env": "^0.6.0"
   },
   "scripts": {
     "start": "NODE_ENV=development netlify-lambda serve src",
