@@ -12,6 +12,7 @@
     "win-node-env": "^0.6.0"
   },
   "scripts": {
+    "test": "nodemon src/index",
     "start": "NODE_ENV=development netlify-lambda serve src",
     "build": "NODE_ENV=production  netlify-lambda build src"
   },
@@ -24,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/nikkiqin120/deliveryClient/issues"
   },
-  "homepage": "https://github.com/nikkiqin120/deliveryClient#readme"
+  "homepage": "https://github.com/nikkiqin120/deliveryClient#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
