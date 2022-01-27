@@ -2,7 +2,7 @@
 functions
 
 node_modules/*
-!node_modules/delivery_tracker/*
+!node_modules/delivery-tracker/*
 
 # local env files
 .env.local
