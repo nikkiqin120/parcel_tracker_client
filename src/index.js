@@ -4,9 +4,9 @@ const tracker = require('delivery-tracker')
 const app = express()
 const router = express.Router()
 
-// const cors = require("cors")
+const cors = require("cors")
 
-// app.use(cors({origin: "*"}))
+app.use(cors({origin: "*"}))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
