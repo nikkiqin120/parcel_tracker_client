@@ -1,8 +1,8 @@
 .DS_Store
-node_modules
 functions
 
-!node_modules\delivery_tracker
+node_modules/*
+!node_modules/delivery_tracker
 
 # local env files
 .env.local
