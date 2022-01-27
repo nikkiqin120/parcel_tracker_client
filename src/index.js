@@ -31,5 +31,5 @@ router.post('/', (req, res) => {
 app.use('/.netlify/functions/index', router);//require('./routes/api'));
 
 module.exports = app;
-// module.exports.handler = serverless(app);
-app.listen(5000, () => console.log("server on 5000"))
+module.exports.handler = serverless(app);
+// app.listen(5000, () => console.log("server on 5000"))
