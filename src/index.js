@@ -7,11 +7,11 @@ const router = express.Router()
 const cors = require("cors")
 
 
-router.use(cors({
+app.use(cors({
   origin: "*"//"http://localhost:8080"
-}))
-router.use(express.json())
-router.use(express.urlencoded({extended: false}))
+}), router)
+app.use(express.json(),router)
+app.use(express.urlencoded({extended: false}),router)
 
 router.get('/', (req, res) => {
   res.json({
