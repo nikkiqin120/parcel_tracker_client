@@ -54,6 +54,7 @@ module.exports = function (opts) {
         var token = parser.token(res.headers['set-cookie'] || [])
         req(tracking.detail(token), function (err, res, body) {
           var response = JSON.parse(body)
+          //console.log(response)
           if (response.statusCode !== '200') {
             return cb(response.statusText)
           }
@@ -70,8 +71,8 @@ module.exports = function (opts) {
             courier: courier,
             status: currentTrackNumberStatus.progressBarType,
             number: currentTrackNumberStatus.trackingNumber,
-            // scheduledDeliveryDate: currentTrackNumberStatus.scheduledDeliveryDate
-            expectedDelivery: currentTrackNumberStatus.deliveredDate
+            expectedDelivery: currentTrackNumberStatus.scheduledDeliveryDate
+            // expectedDelivery: currentTrackNumberStatus.deliveredDate
             // scheduledDeliveryTime: currentTrackNumberStatus.scheduledDeliveryTime,
             // scheduledDeliveryTimeEODLabel: currentTrackNumberStatus.scheduledDeliveryTimeEODLabel
           }

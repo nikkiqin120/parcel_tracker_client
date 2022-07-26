@@ -96,13 +96,15 @@ module.exports = function (opts) {
         form: tracking.data,
         json: true
       }, function (err, res, body) {
-         // console.log(JSON.stringify(res))
+        //console.log(JSON.stringify(res))
         if (err) {
+          //console.log('fedxex - err')
           return cb(err)
         }
 
         try {
           var results = parser.trace(body.TrackPackagesResponse.packageList)
+          console.log(results)
           cb(null, results[0])
         } catch (e) {
           cb(tracker.error(e.message))

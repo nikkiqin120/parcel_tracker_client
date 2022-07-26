@@ -66,6 +66,7 @@ module.exports = function () {
 
         try {
           var result = parser.trace(JSON.parse(body))
+          //console.log(result)
           cb(result ? null : tracker.error(tracker.ERROR.INVALID_NUMBER), result)
         } catch (e) {
           cb(tracker.error(e.message))
