@@ -22,7 +22,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   })
   .catch(err => console.log(err))
 
-router.get('/find', (req, res) => {
+router.get('/find', cors(), (req, res) => {
   Blog.find()
     .then((result) => {
       res.send(result)
@@ -36,10 +36,8 @@ router.get('/deleteall', async (req, res) => {
     .catch(err => console.log(err))
 })
 
-router.post('/add', (req, res) => {
-  console.log("/add")
+router.post('/add', cors(), (req, res) => {
   const item = req.body.data
-  // console.log(item)
   const blog = new Blog(item)
 
   blog.save()
@@ -49,11 +47,6 @@ router.post('/add', (req, res) => {
 
 router.post('/delete', async (req, res) => {
   Blog.deleteOne({ tracknumber: req.body.data.tracknumber })
-
-    // const delItem = await Blog.findOne({ tracknumber: req.body.data.tracknumber })
-
-    // if (delItem != null) {
-    //   delItem.deleteOne()
     .then(result => console.log("delete CR: " + JSON.stringify(result)))
     .catch(err => console.log(err))
   // }
