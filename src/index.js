@@ -22,7 +22,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   })
   .catch(err => console.log(err))
 
-router.get('/find', cors({ origin: "*" }), (req, res) => {
+router.get('/', (req, res) => {
   Blog.find()
     .then((result) => {
       res.send(result)
@@ -30,13 +30,21 @@ router.get('/find', cors({ origin: "*" }), (req, res) => {
     .catch(err => console.log(err))
 })
 
-router.get('/deleteall', cors({ origin: "*" }), async (req, res) => {
+router.get('/find', (req, res) => {
+  Blog.find()
+    .then((result) => {
+      res.send(result)
+    })
+    .catch(err => console.log(err))
+})
+
+router.get('/deleteall', async (req, res) => {
   Blog.deleteMany()
     .then(result => console.log("delete all: " + result))
     .catch(err => console.log(err))
 })
 
-router.post('/add', cors({ origin: "*" }), (req, res) => {
+router.post('/add', (req, res) => {
   const item = req.body.data
   const blog = new Blog(item)
 
@@ -45,7 +53,7 @@ router.post('/add', cors({ origin: "*" }), (req, res) => {
     .catch(err => console.log(err))
 })
 
-router.post('/delete', cors({ origin: "*" }), async (req, res) => {
+router.post('/delete', async (req, res) => {
   Blog.deleteOne({ tracknumber: req.body.data.tracknumber })
     .then(result => console.log("delete CR: " + JSON.stringify(result)))
     .catch(err => console.log(err))
