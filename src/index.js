@@ -5,6 +5,8 @@ const app = express()
 const router = express.Router()
 const mongodb = require('mongodb');
 const { MongoClient, ServerApiVersion } = require('mongodb')
+const mongoose = require('mongoose')
+const Blog = require('./models/blog')
 
 const cors = require("cors")
 
@@ -13,15 +15,48 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 const pwd = encodeURIComponent("Novax2022@")
-const uri = "mongodb+srv://nikkiqin120:" + pwd + "@cluster0.o8bsv.mongodb.net/?retryWrites=true&w=majority";
-// console.log(uri)
+const uri = "mongodb+srv://nikkiqin120:" + pwd + "@ndata.zhcza.mongodb.net/?retryWrites=true&w=majority"
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(res => {
+    // console.log("connect to db0")
+  })
+  .catch(err => console.log(err))
 
-router.get('/', async (req, res) => {
-  res.send("Hello Nikki, I'm index.js")
+router.get('/find', (req, res) => {
+  Blog.find()
+    .then((result) => {
+      res.send(result)
+    })
+    .catch(err => console.log(err))
+})
 
-  // const posts = await loadcollection()
-  // res.send(await posts.insertOne({ a: "newone" }, func => { }));
+router.get('/deleteall', async (req, res) => {
+  Blog.deleteMany()
+    .then(result => console.log("delete all: " + result))
+    .catch(err => console.log(err))
+})
 
+router.post('/add', (req, res) => {
+  console.log("/add")
+  const item = req.body.data
+  // console.log(item)
+  const blog = new Blog(item)
+
+  blog.save()
+    .then(result => res.send(result))
+    .catch(err => console.log(err))
+})
+
+router.post('/delete', async (req, res) => {
+  Blog.deleteOne({ tracknumber: req.body.data.tracknumber })
+
+    // const delItem = await Blog.findOne({ tracknumber: req.body.data.tracknumber })
+
+    // if (delItem != null) {
+    //   delItem.deleteOne()
+    .then(result => console.log("delete CR: " + JSON.stringify(result)))
+    .catch(err => console.log(err))
+  // }
 })
 
 
@@ -38,15 +73,6 @@ router.post('/', (req, res) => {
   })
 })
 
-
-async function loadcollection() {
-  const client = await mongodb.MongoClient.connect(
-    uri, { useNewUrlParser: true }
-  );
-  return client.db("sample_guides").collection("Cluster0");
-
-
-}
 ////***************For debug************/////
 
 // var courier = tracker.courier('ups')
@@ -63,11 +89,7 @@ async function loadcollection() {
 //   }
 // })
 /////////////////
-
-
 app.use('/.netlify/functions/index', router); //require('../routes/api'));
-
-
 ////*****************Chose one option from below************************/
 // 1. serverless in netlify
 module.exports = app;

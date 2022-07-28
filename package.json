@@ -8,6 +8,7 @@
     "delivery-tracker": "^2.7.1",
     "express": "^4.17.2",
     "mongodb": "^4.7.0",
+    "mongoose": "^6.5.0",
     "netlify-lambda": "^2.0.15",
     "serverless-http": "^2.7.0"
   },
