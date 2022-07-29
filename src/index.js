@@ -30,8 +30,8 @@ const dbRouter = require('./routes/database')
 app.use('/.netlify/functions/index', dbRouter); //require('../routes/api'));
 ////*****************Chose one option from below************************/
 // 1. serverless in netlify
-// module.exports = app;
-exports.handler = serverless(app);
+module.exports = app;
+module.exports.handler = serverless(app);
 
 // 2. local debug : npm test
 // app.listen(5000, () => console.log("server on 5000"))
