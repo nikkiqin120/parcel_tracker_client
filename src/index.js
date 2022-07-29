@@ -11,6 +11,7 @@ const Blog = require('./models/blog')
 const cors = require("cors")
 
 app.use(cors({ origin: "*" }))
+router.use(cors({ origin: '*' }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
